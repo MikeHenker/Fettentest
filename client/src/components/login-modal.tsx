@@ -107,7 +107,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             ) : (
               <i className="fas fa-sign-in-alt mr-2"></i>
             )}
-            {isLoading ? "Einloggen..." : "Einloggen"}
+            {isLoading ? "Fettiger Fettsack einloggen..." : "Fettiger Fettsack einloggen"}
           </Button>
         </form>
       </DialogContent>

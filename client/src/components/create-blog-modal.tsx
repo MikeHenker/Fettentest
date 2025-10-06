@@ -85,10 +85,12 @@ export default function CreateBlogModal({ onClose }: CreateBlogModalProps) {
       return;
     }
 
-    if (formData.tasteScore === 0 || formData.appearanceScore === 0 || formData.smellScore === 0) {
+    if (formData.tasteScore < 0 || formData.tasteScore > 10 || 
+        formData.appearanceScore < 0 || formData.appearanceScore > 10 || 
+        formData.smellScore < 0 || formData.smellScore > 10) {
       toast({
-        title: "Bewertungen erforderlich",
-        description: "Bitte gib für alle drei Kategorien eine Bewertung ab.",
+        title: "Ungültige Bewertungen",
+        description: "Bewertungen müssen zwischen 0 und 10 liegen.",
         variant: "destructive",
       });
       return;
@@ -201,7 +203,7 @@ export default function CreateBlogModal({ onClose }: CreateBlogModalProps) {
                     max="10"
                     step="0.1"
                     placeholder="0.0"
-                    value={formData.tasteScore || ""}
+                    value={formData.tasteScore}
                     onChange={(e) => setFormData(prev => ({ ...prev, tasteScore: parseFloat(e.target.value) || 0 }))}
                     className="text-xl font-bold border border-border focus:border-primary"
                     data-testid="input-taste-score"
@@ -218,7 +220,7 @@ export default function CreateBlogModal({ onClose }: CreateBlogModalProps) {
                     max="10"
                     step="0.1"
                     placeholder="0.0"
-                    value={formData.appearanceScore || ""}
+                    value={formData.appearanceScore}
                     onChange={(e) => setFormData(prev => ({ ...prev, appearanceScore: parseFloat(e.target.value) || 0 }))}
                     className="text-xl font-bold border border-border focus:border-primary"
                     data-testid="input-appearance-score"
@@ -235,7 +237,7 @@ export default function CreateBlogModal({ onClose }: CreateBlogModalProps) {
                     max="10"
                     step="0.1"
                     placeholder="0.0"
-                    value={formData.smellScore || ""}
+                    value={formData.smellScore}
                     onChange={(e) => setFormData(prev => ({ ...prev, smellScore: parseFloat(e.target.value) || 0 }))}
                     className="text-xl font-bold border border-border focus:border-primary"
                     data-testid="input-smell-score"
