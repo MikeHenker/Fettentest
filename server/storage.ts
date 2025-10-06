@@ -84,9 +84,8 @@ export class MemStorage implements IStorage {
   }
 }
 
-import { DbStorage } from "./db-storage";
-
-// Verwende DbStorage wenn DATABASE_URL verfügbar ist, sonst MemStorage
+// Verwende MemStorage als Standard
+export const storage: IStorage = new MemStorage();e
 let storageInstance: IStorage;
 try {
   const databaseUrl = process.env.DATABASE_URL;
