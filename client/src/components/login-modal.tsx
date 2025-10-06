@@ -13,8 +13,8 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  const [username, setUsername] = useState("fettiger fettsack");
-  const [password, setPassword] = useState("fettbeharrt");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const { toast } = useToast();

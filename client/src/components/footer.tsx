@@ -24,9 +24,11 @@ export default function Footer() {
                 <h3 className="font-heading font-bold text-lg text-primary">STIFTUNG FETTENTEST</h3>
               </div>
             </div>
+            <p className="text-muted-foreground leading-relaxed max-w-md mb-4">
+              Die Stiftung Fettentest ist Ihre vertrauenswürdige und vollkommen unabhängige Test-Plattform für Lebensmittel und Getränke aller Art. Mit jahrelanger Expertise und einem unbestechlichen Qualitätsanspruch bieten wir Ihnen professionelle, detaillierte Bewertungen nach den drei fundamentalen Kriterien: Geschmack, Aussehen und Geruch.
+            </p>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Die unabhängige Test-Plattform für Lebensmittel und Getränke. 
-              Professionelle Bewertungen nach Geschmack, Aussehen und Geruch.
+              Unser Experte, der Fettiger Fettsack, testet jedes Produkt mit größter Sorgfalt und dokumentiert seine Erfahrungen in ausführlichen Blog-Posts mit professionellen Fotografien. Authentizität, Transparenz und Ehrlichkeit sind die Grundpfeiler unserer Arbeit.
             </p>
           </div>
           
@@ -67,10 +69,10 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-foreground mb-4">Kontakt</h4>
             <ul className="space-y-2">
               <li className="text-muted-foreground">
-                <i className="fas fa-envelope mr-2 text-primary"></i>info@fettentest.de
+                <i className="fas fa-envelope mr-2 text-primary"></i>spammail10q1@gmail.com
               </li>
               <li className="text-muted-foreground">
-                <i className="fas fa-phone mr-2 text-primary"></i>+49 123 456789
+                <i className="fas fa-map-marker-alt mr-2 text-primary"></i>Schwaförden
               </li>
               <li className="flex space-x-3 mt-4">
                 <a 

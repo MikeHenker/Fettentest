@@ -46,7 +46,7 @@ export default function HeroSection({ onScrollToBlogs, onShowLogin }: HeroSectio
                 className="px-8 py-4 border-2 border-primary font-bold hover:bg-primary hover:text-primary-foreground text-lg"
                 data-testid="button-login-hero"
               >
-                <i className="fas fa-user mr-2"></i>Als Tester Einloggen
+                <i className="fas fa-user mr-2"></i>Fettiger Fettsack einloggen
               </Button>
             )}
           </div>

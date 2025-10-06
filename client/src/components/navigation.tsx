@@ -101,7 +101,7 @@ export default function Navigation() {
                   className="px-6 py-2 bg-primary text-primary-foreground font-semibold hover:bg-accent golden-glow"
                   data-testid="button-login"
                 >
-                  <i className="fas fa-sign-in-alt mr-2"></i>Einloggen
+                  <i className="fas fa-sign-in-alt mr-2"></i>Fettiger Fettsack einloggen
                 </Button>
               )}
             </div>
@@ -173,7 +173,7 @@ export default function Navigation() {
                     className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium w-full text-left"
                     data-testid="button-login-mobile"
                   >
-                    Einloggen
+                    Fettiger Fettsack einloggen
                   </button>
                 )}
               </div>
