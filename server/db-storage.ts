@@ -12,12 +12,7 @@ neonConfig.webSocketConstructor = ws;
 export class DbStorage implements IStorage {
   private db;
 
-  constructor() {
-    const databaseUrl = process.env.DATABASE_URL;
-    if (!databaseUrl) {
-      throw new Error("DATABASE_URL environment variable is not set");
-    }
-    
+  constructor(databaseUrl: string) {
     const pool = new Pool({ connectionString: databaseUrl });
     this.db = drizzle(pool);
   }
