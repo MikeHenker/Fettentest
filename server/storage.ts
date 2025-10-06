@@ -1,3 +1,4 @@
+
 import { type User, type InsertUser, type BlogPost, type InsertBlogPost } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -84,5 +85,22 @@ export class MemStorage implements IStorage {
   }
 }
 
-// Verwende MemStorage als Standard
-export const storage: IStorage = new MemStorage();
+import { DbStorage } from "./db-storage";
+
+// Verwende DbStorage wenn DATABASE_URL verfügbar ist, sonst MemStorage
+let storageInstance: IStorage;
+try {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (databaseUrl) {
+    storageInstance = new DbStorage(databaseUrl);
+    console.log("Using PostgreSQL Database Storage");
+  } else {
+    storageInstance = new MemStorage();
+    console.log("Using In-Memory Storage (DATABASE_URL not set)");
+  }
+} catch (error) {
+  console.error("Failed to initialize database storage, falling back to in-memory:", error);
+  storageInstance = new MemStorage();
+}
+
+export const storage = storageInstance;
