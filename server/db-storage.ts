@@ -11,10 +11,11 @@ neonConfig.webSocketConstructor = ws;
 
 export class DbStorage implements IStorage {
   private db;
+  public pool;
 
   constructor(databaseUrl: string) {
-    const pool = new Pool({ connectionString: databaseUrl });
-    this.db = drizzle(pool);
+    this.pool = new Pool({ connectionString: databaseUrl });
+    this.db = drizzle(this.pool);
   }
 
   async getUser(id: string): Promise<User | undefined> {

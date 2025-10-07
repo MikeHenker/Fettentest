@@ -1,7 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import { storage } from "./storage";
+import { DbStorage } from "./db-storage";
 import { insertBlogPostSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -17,17 +19,29 @@ const loginSchema = z.object({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Session middleware
-  app.use(session({
+  // Session middleware with PostgreSQL store
+  const PgSession = connectPgSimple(session);
+  
+  const sessionConfig: session.SessionOptions = {
     secret: process.env.SESSION_SECRET || 'fallback-secret',
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // Set to true in production with HTTPS
+      secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
-  }));
+  };
+
+  // Use PostgreSQL session store if database is available
+  if (storage instanceof DbStorage) {
+    sessionConfig.store = new PgSession({
+      pool: storage.pool,
+      createTableIfMissing: true,
+    });
+  }
+
+  app.use(session(sessionConfig));
 
   // Authentication middleware
   const requireAuth = (req: any, res: any, next: any) => {
